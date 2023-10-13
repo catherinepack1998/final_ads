@@ -1,0 +1,29 @@
+{% extends 'layout/default.html' %}
+
+{% block title %}
+Главная страница
+{% endblock title %}
+{% block content %}
+<ul class="list-articles">
+	{% for ad in ads %}
+	<li>
+		<div class="article-panel">
+		<p class="first">Категория: {{ad.category}}</p>
+		<p class="last">Отклики: {{ response }}</p><br>
+		<p class="last">Дата: {{ad.create_date|date:"d-m-Y H:i:s"}}</p>
+		<p>Автор: {{ad.user_id}}</p>
+		</div>
+		{% if ad.content %}
+			<p><img class="img-article-left thumb" src="{{ad.content.url}}"></p>
+		{% endif %}
+		<h2>{{ad.heading}}</h2>
+		{% autoescape on %}
+		{{ad.text|truncatewords:50}}
+		{% endautoescape %}
+		<div></div>
+		<p class="link-read-post"><a class="open" href="/ads/ad/{{ ad.pk }}">Смотреть объявление</a></p>
+	</li>
+	{% endfor %}
+
+</ul>
+{% endblock content %}

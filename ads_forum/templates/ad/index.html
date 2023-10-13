@@ -1,0 +1,14 @@
+{% extends 'layout/default.html' %}
+
+{% block content %}
+<h1>{{ad.heading}}</h1>
+
+{% if ad.content %}
+<p><img class="img-article-left" src="{{ad.content.url}}"></p>
+{% endif %}
+
+{{ad.text|linebreaks}}
+{% if request.user.is_authenticated %}
+    <p class="link-read-post"><a class="open" href="/ads/ad/response?id={{ ad.pk }}">Откликнуться</a></p>
+{% endif %}
+{% endblock %}

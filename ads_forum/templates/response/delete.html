@@ -1,0 +1,7 @@
+{% extends 'layout/default.html' %}
+{% block content %}
+<h1>Удалить отклик?</h1>
+<form method="POST">
+    {% csrf_token %}
+    <input type="submit" value="да"></form>
+{% endblock content %}
